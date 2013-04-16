@@ -1,7 +1,7 @@
 {
     "name": "elsass/seeraiwer-user-bundle",
     "description": "Symfony ElsassSeeraiwerUserBundle",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "friendsofsymfony/user-bundle": "*"
     },
