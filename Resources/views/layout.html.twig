@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style>
+            body.fos div.fos_main {
+                width: 400px;
+                display: block;
+                margin: auto;
+                padding: 10px 7px;
+                top: 100px;
+                position: relative;
+                /*background-color: #fcd34f;*/
+                border: 2px solid #888;
+                border-radius: 12px;
+
+                background-color: #f7f7f7;
+                color: #2f2f2f;
+
+                background-image: -moz-linear-gradient(top, #fcd34f, #F39002);
+                background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fcd34f), to(#F39002));
+                background-image: -o-linear-gradient(top, #fcd34f, #F39002);
+                background: linear-gradient(top, #fcd34f, #F39002);
+            }
+
+            body.fos label {
+                font-weight: bold;
+            }
+
+            .fos_user_user_show div {
+                display: block;
+                height: 25px;
+            }
+
+            .fos_user_user_show span {
+                float: right;
+            }
+
+            #fos_user_profile_form div,
+            #fos_user_change_password_form div,
+            #fos_user_registration_form div,
+            div.field {
+                display: block;
+                height: 35px;
+            }
+
+            #fos_user_profile_form input,
+            #fos_user_change_password_form input,
+            #fos_user_registration_form input,
+            div.field input {
+                float: right;
+            }
+
+        </style>
+    </head>
+    <body class="fos">
+        {# Intégration de la userBar Seeraiwer #}
+        {{ render(controller('ElsassSeeraiwerBundle:UserBar:userBar')) }}
+        <div class="fos_main">
+            <div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+
+                {% block fos_user_login_top %}
+                {% endblock fos_user_login_top %}
+            </div>
+
+            <hr>
+
+            {% for key, message in app.session.getFlashes() %}
+            <div class="{{ key }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+            {% endfor %}
+
+            <div>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+        </div>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
