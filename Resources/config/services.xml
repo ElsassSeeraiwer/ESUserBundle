@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="elsass_seeraiwer_user.example.class">Elsass\SeeraiwerUserBundle\Example</parameter>
+        <parameter key="es_user.example.class">ElsassSeeraiwer\ESUserBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="elsass_seeraiwer_user.example" class="%elsass_seeraiwer_user.example.class%">
+        <service id="es_user.example" class="%es_user.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

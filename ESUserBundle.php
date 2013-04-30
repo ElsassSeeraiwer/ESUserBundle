@@ -1,10 +1,10 @@
 <?php
 
-namespace Elsass\SeeraiwerUserBundle;
+namespace ElsassSeeraiwer\ESUserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ElsassSeeraiwerUserBundle extends Bundle
+class ESUserBundle extends Bundle
 {
     public function getParent()
     {
